@@ -24,11 +24,10 @@
 **/doc/api/
 .dart_tool/
 .flutter-plugins
-.flutter-plugins-dependencies
 .packages
 .pub-cache/
 .pub/
-build/
+/build/
 
 # Android related
 **/android/**/gradle-wrapper.jar
@@ -58,12 +57,10 @@ build/
 **/ios/.generated/
 **/ios/Flutter/App.framework
 **/ios/Flutter/Flutter.framework
-**/ios/Flutter/Flutter.podspec
 **/ios/Flutter/Generated.xcconfig
 **/ios/Flutter/app.flx
 **/ios/Flutter/app.zip
 **/ios/Flutter/flutter_assets/
-**/ios/Flutter/flutter_export_environment.sh
 **/ios/ServiceDefinitions.json
 **/ios/Runner/GeneratedPluginRegistrant.*
 
@@ -73,6 +70,3 @@ build/
 !**/ios/**/default.pbxuser
 !**/ios/**/default.perspectivev3
 !/packages/flutter_tools/test/data/dart_dependencies_test/**/.packages
-/example/android/.gradle/
-/example/android/app/.project
-/example/android/.project
