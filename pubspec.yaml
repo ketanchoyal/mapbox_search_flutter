@@ -1,17 +1,18 @@
 name: mapbox_search_flutter
-description: Flutter MapBox Search Widget
-version: 1.0.1
-author: Ketan Choyal <ketanchoyal@gmail.com>
+description: This package provides some helper widgets to use with mapbox_search library.
+version: 1.0.2
+authors:
+  - Ketan Choyal <ketanchoyal@gmail.com>
+  - Daniel Oliveira <shinayser@gmail.com>
 homepage: https://github.com/ketanchoyal/mapbox_search_flutter
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
   mapbox_search: ^2.0.0-dev.1.0.1
-  http: ^0.12.0+4
 
 dev_dependencies:
   flutter_test:
