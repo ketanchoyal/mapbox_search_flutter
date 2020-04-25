@@ -3,7 +3,8 @@ import 'package:mapbox_search_flutter/mapbox_search_flutter.dart';
 
 void main() => runApp(MyApp());
 
-const kApiKey = 'YOUR_API_KEY';
+const kApiKey =
+    'YOUR_API_KEY';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -119,7 +120,7 @@ class _MapBoxExampleState extends State<MapBoxExample> {
         height: 300,
         width: 600,
         zoomLevel: 16,
-        style: MapBoxStyle.Mapbox_Dark,
+        style: MapBoxStyle.Dark,
         path: MapBoxPath(
           pathColor: Color.rgb(244, 0, 0),
           pathOpacity: 0.5,
@@ -139,7 +140,7 @@ class _MapBoxExampleState extends State<MapBoxExample> {
         height: 300,
         width: 600,
         zoomLevel: 16,
-        style: MapBoxStyle.Mapbox_Streets,
+        style: MapBoxStyle.Streets,
         render2x: true,
       );
 
@@ -148,7 +149,7 @@ class _MapBoxExampleState extends State<MapBoxExample> {
         height: 300,
         width: 600,
         zoomLevel: 16,
-        style: MapBoxStyle.Mapbox_Outdoors,
+        style: MapBoxStyle.Outdoors,
         render2x: true,
       );
 }

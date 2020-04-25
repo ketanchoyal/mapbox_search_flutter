@@ -104,6 +104,7 @@ class _MapBoxPlaceSearchWidgetState extends State<MapBoxPlaceSearchWidget>
   @override
   void dispose() {
     _debounceTimer.cancel();
+    _animationController.dispose();
     super.dispose();
   }
 
@@ -163,13 +164,17 @@ class _MapBoxPlaceSearchWidgetState extends State<MapBoxPlaceSearchWidget>
               style: TextStyle(
                 fontSize: MediaQuery.of(context).size.width * 0.04,
               ),
-              onChanged: (value) {
+              onChanged: (value) async {
                 _debounceTimer?.cancel();
-                _debounceTimer = Timer(Duration(milliseconds: 750), () {
-                  if (mounted) {
-                    setState(() => _autocompletePlace(value));
-                  }
-                });
+                _debounceTimer = Timer(
+                  Duration(milliseconds: 750),
+                  () async {
+										await _autocompletePlace(value);
+                    if (mounted) {
+                      setState(() {});
+                    }
+                  },
+                );
               },
             ),
           ),
@@ -232,7 +237,7 @@ class _MapBoxPlaceSearchWidgetState extends State<MapBoxPlaceSearchWidget>
   }
 
   // Methods
-  void _autocompletePlace(String input) async {
+  Future _autocompletePlace(String input) async {
     /// Will be called when the input changes. Making callbacks to the Places
     /// Api and giving the user Place options
     ///
