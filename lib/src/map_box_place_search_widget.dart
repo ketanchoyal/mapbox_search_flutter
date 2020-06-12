@@ -103,8 +103,8 @@ class _MapBoxPlaceSearchWidgetState extends State<MapBoxPlaceSearchWidget>
 
   @override
   void dispose() {
-    _debounceTimer.cancel();
-    _animationController.dispose();
+    _debounceTimer?.cancel();
+    _animationController?.dispose();
     super.dispose();
   }
 
