@@ -1,3 +1,7 @@
+
+## [1.0.5] - 12 June 2020
+    - Resolved Do no call on null issue
+  
 ## [1.0.4] - 24 April 2020
     - Bug Solved(_searchInput returns a future inside setstate)
 

@@ -1,6 +1,8 @@
-[![Pub](https://img.shields.io/pub/v/mapbox_search_flutter)](https://pub.dartlang.org/packages/mapbox_search_flutter) <a href="https://flutterawesome.com/a-flutter-package-for-place-search-using-mapbox-api-and-for-static-map-image/">
+[![Pub](https://img.shields.io/pub/v/mapbox_search_flutter)](https://pub.dartlang.org/packages/mapbox_search_flutter) [![HitCount](http://hits.dwyl.com/ketanchoyal/mapbox_search_flutter.svg)](http://hits.dwyl.com/ketanchoyal/mapbox_search_flutter)
+ <a href="https://flutterawesome.com/a-flutter-package-for-place-search-using-mapbox-api-and-for-static-map-image/">
    <img alt="Awesome Flutter" src="https://img.shields.io/badge/Awesome-Flutter-blue.svg?longCache=true&style=flat-square" />
 </a>
+
 
 # About 
 
