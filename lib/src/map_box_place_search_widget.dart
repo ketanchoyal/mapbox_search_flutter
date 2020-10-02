@@ -5,11 +5,8 @@ class MapBoxPlaceSearchWidget extends StatefulWidget {
     @required this.apiKey,
     this.onSelected,
     // this.onSearch,
+    this.fontSize,
     this.searchHint = 'Search',
-    this.language = 'en',
-    this.location,
-    this.limit = 5,
-    this.country,
     this.context,
     this.height,
     this.popOnSelect = false,
@@ -33,24 +30,11 @@ class MapBoxPlaceSearchWidget extends StatefulWidget {
   /// The callback that is called when the user taps on the search icon.
   // final void Function(MapBoxPlaces place) onSearch;
 
-  /// Language used for the autocompletion.
-  ///
-  /// Check the full list of [supported languages](https://docs.mapbox.com/api/search/#language-coverage) for the MapBox API
-  final String language;
-
-  /// The point around which you wish to retrieve place information.
-  final Location location;
-
-  /// Limits the no of predections it shows
-  final int limit;
-
-  ///Limits the search to the given country
-  ///
-  /// Check the full list of [supported countries](https://docs.mapbox.com/api/search/) for the MapBox API
-  final String country;
-
   ///Search Hint Localization
   final String searchHint;
+	
+   ///Font Size 
+   final String fontSize;
 
   @override
   _MapBoxPlaceSearchWidgetState createState() =>
@@ -162,7 +146,7 @@ class _MapBoxPlaceSearchWidgetState extends State<MapBoxPlaceSearchWidget>
               decoration: _inputStyle(),
               controller: _textEditingController,
               style: TextStyle(
-                fontSize: MediaQuery.of(context).size.width * 0.04,
+                fontSize: widget.fontSize ?? MediaQuery.of(context).size.width * 0.04,
               ),
               onChanged: (value) async {
                 _debounceTimer?.cancel();
