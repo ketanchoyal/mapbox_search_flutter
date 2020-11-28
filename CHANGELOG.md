@@ -1,4 +1,6 @@
-
+## [1.0.6] - 28 Nov 2020
+    - Added Font Size
+    
 ## [1.0.5] - 12 June 2020
     - Resolved Do no call on null issue
   
