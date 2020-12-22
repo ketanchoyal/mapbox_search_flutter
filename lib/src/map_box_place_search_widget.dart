@@ -10,6 +10,8 @@ class MapBoxPlaceSearchWidget extends StatefulWidget {
     this.context,
     this.height,
     this.popOnSelect = false,
+    this.location,
+    this.country,
   });
 
   /// True if there is different search screen and you want to pop screen on select
@@ -30,11 +32,19 @@ class MapBoxPlaceSearchWidget extends StatefulWidget {
   /// The callback that is called when the user taps on the search icon.
   // final void Function(MapBoxPlaces place) onSearch;
 
+  /// The point around which you wish to retrieve place information.
+  final Location location;
+
+  ///Limits the search to the given country
+  ///
+  /// Check the full list of [supported countries](https://docs.mapbox.com/api/search/) for the MapBox API
+  final String country;
+
   ///Search Hint Localization
   final String searchHint;
-	
-   ///Font Size 
-   final String fontSize;
+
+  ///Font Size
+  final String fontSize;
 
   @override
   _MapBoxPlaceSearchWidgetState createState() =>
@@ -146,14 +156,15 @@ class _MapBoxPlaceSearchWidgetState extends State<MapBoxPlaceSearchWidget>
               decoration: _inputStyle(),
               controller: _textEditingController,
               style: TextStyle(
-                fontSize: widget.fontSize ?? MediaQuery.of(context).size.width * 0.04,
+                fontSize:
+                    widget.fontSize ?? MediaQuery.of(context).size.width * 0.04,
               ),
               onChanged: (value) async {
                 _debounceTimer?.cancel();
                 _debounceTimer = Timer(
                   Duration(milliseconds: 750),
                   () async {
-										await _autocompletePlace(value);
+                    await _autocompletePlace(value);
                     if (mounted) {
                       setState(() {});
                     }
