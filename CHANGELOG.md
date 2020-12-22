@@ -1,3 +1,6 @@
+## [1.0.6+1] - 22 Dec 2020
+    - Resolved missing variable issue
+    
 ## [1.0.6] - 28 Nov 2020
     - Added Font Size
     
