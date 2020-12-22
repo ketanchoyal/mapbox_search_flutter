@@ -3,8 +3,7 @@ import 'package:mapbox_search_flutter/mapbox_search_flutter.dart';
 
 void main() => runApp(MyApp());
 
-const kApiKey =
-    'YOUR_API_KEY';
+const kApiKey = 'YOUR_API_KEY';
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -172,7 +171,6 @@ class SearchPage extends StatelessWidget {
           popOnSelect: true,
           apiKey: kApiKey,
           searchHint: 'Search around',
-          limit: 10,
           onSelected: (place) {},
           context: context,
         ),
