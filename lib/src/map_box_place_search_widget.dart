@@ -12,6 +12,9 @@ class MapBoxPlaceSearchWidget extends StatefulWidget {
     this.popOnSelect = false,
     this.location,
     this.country,
+    this.color,
+    this.icon,
+    this.onIconTapped,
   });
 
   /// True if there is different search screen and you want to pop screen on select
@@ -46,6 +49,15 @@ class MapBoxPlaceSearchWidget extends StatefulWidget {
   ///Font Size
   final String fontSize;
 
+  //Field Color
+  final Color color;
+
+  //Suffix Icon
+  final Icon icon;
+
+  //On Icon Tapped
+  final void Function(String place) onIconTapped;
+
   @override
   _MapBoxPlaceSearchWidgetState createState() =>
       _MapBoxPlaceSearchWidgetState();
@@ -73,7 +85,7 @@ class _MapBoxPlaceSearchWidgetState extends State<MapBoxPlaceSearchWidget>
     _animationController =
         AnimationController(vsync: this, duration: Duration(milliseconds: 500));
     _containerHeight = Tween<double>(
-            begin: 73,
+            begin: 48, //Original 72
             end: widget.height ??
                 MediaQuery.of(widget.context).size.height - 60 ??
                 300)
@@ -104,7 +116,6 @@ class _MapBoxPlaceSearchWidgetState extends State<MapBoxPlaceSearchWidget>
 
   @override
   Widget build(BuildContext context) => Container(
-        padding: EdgeInsets.symmetric(horizontal: 5),
         width: MediaQuery.of(context).size.width,
         child: _searchContainer(
           child: _searchInput(context),
@@ -119,15 +130,10 @@ class _MapBoxPlaceSearchWidgetState extends State<MapBoxPlaceSearchWidget>
           return Container(
             height: _containerHeight.value,
             decoration: _containerDecoration(),
-            padding: EdgeInsets.only(left: 0, right: 0, top: 15),
             alignment: Alignment.center,
             child: Column(
               children: <Widget>[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12.0),
-                  child: child,
-                ),
-                SizedBox(height: 10),
+                child,
                 Expanded(
                   child: Opacity(
                     opacity: _listOpacity.value,
@@ -151,6 +157,7 @@ class _MapBoxPlaceSearchWidgetState extends State<MapBoxPlaceSearchWidget>
     return Center(
       child: Row(
         children: <Widget>[
+          Container(width: 15),
           Expanded(
             child: TextField(
               decoration: _inputStyle(),
@@ -175,9 +182,20 @@ class _MapBoxPlaceSearchWidgetState extends State<MapBoxPlaceSearchWidget>
           ),
           Container(width: 15),
           GestureDetector(
-            child: Icon(Icons.search, color: Colors.blue),
-            onTap: () {},
-          )
+            child: widget.icon,
+            onTap: () async {
+              widget.onIconTapped(_textEditingController.text);
+              // Makes animation
+              await _animationController.animateTo(0.5);
+              setState(() {
+                _placePredictions = [];
+                // _selectedPlace = prediction;
+              });
+              _animationController.reverse();
+              if (widget.popOnSelect) Navigator.pop(context);
+            },
+          ),
+          Container(width: 15),
         ],
       ),
     );
@@ -223,8 +241,8 @@ class _MapBoxPlaceSearchWidgetState extends State<MapBoxPlaceSearchWidget>
 
   BoxDecoration _containerDecoration() {
     return BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.all(Radius.circular(6.0)),
+      color: widget.color ?? Colors.white,
+      borderRadius: BorderRadius.all(Radius.circular(8.0)), //Original 6.0
       boxShadow: [
         BoxShadow(color: Colors.black, blurRadius: 0, spreadRadius: 0)
       ],
